@@ -6,54 +6,42 @@ typedef struct Node{
     struct Node *sequence;
 }NODE;
 
-void insertValue(int newValue,NODE *list){
-    NODE *newNode;
-    newNode = malloc(sizeof(NODE));
-    newNode->value = newValue;
-    newNode->sequence = list->sequence;
-    list->sequence = newNode;
+
+void insertValueHead(int newValue,NODE *list){
+    NODE *newNODE = malloc(sizeof(NODE));
+
+    newNODE->value = newValue;
+    newNODE->sequence = list;
+    list->sequence = newNODE;
 
 }
 
-void printList(NODE *list){
-    NODE *itinerator;
-
-    for(itinerator = list;itinerator != NULL;itinerator = itinerator->sequence){
-        printf("%d \n",itinerator->value);
-    }
-
-}
-
-NODE *searchValue(int searched,NODE * list){
+void printListHead(NODE *list){
     NODE *aux;
     aux = list->sequence;
 
-    while (aux->sequence != NULL && aux->value != searched)
+    while(aux != NULL)
     {
+        printf("%d",aux->value);
         aux = aux->sequence;
     }
-
-    return aux;
-
+    
 }
 
+
+
 int main(){
-    //CRIANDO UMA LISTA COM CABEÇA
-    NODE noHead,*pnoHead;
-    noHead.sequence = NULL;
-    pnoHead = &noHead;
+    //INICIA LISTA COM CABEÇA
+    NODE *pList; 
+    pList = malloc(sizeof(NODE));
+    pList->sequence = NULL;
 
-    insertValue(5,pnoHead);
-    insertValue(10,pnoHead);
+    insertValueHead(5,pList);
+    insertValueHead(7,pList);
 
-    pnoHead = searchValue(1,pnoHead);
-    
+    insertValueHead(9,pList);
 
-    NODE head,*pHead;
-    head.value = 2;
-    head.sequence = NULL;
-    pHead = &head;
-
+    printListHead(pList);
 
 
 }
