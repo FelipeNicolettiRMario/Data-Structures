@@ -11,7 +11,7 @@ void insertValueHead(int newValue,NODE *list){
     NODE *newNODE = malloc(sizeof(NODE));
 
     newNODE->value = newValue;
-    newNODE->sequence = list;
+    newNODE->sequence = list->sequence;
     list->sequence = newNODE;
 
 }
@@ -22,7 +22,7 @@ void printListHead(NODE *list){
 
     while(aux != NULL)
     {
-        printf("%d",aux->value);
+        printf("%d\n",aux->value);
         aux = aux->sequence;
     }
     
