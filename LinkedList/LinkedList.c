@@ -38,14 +38,13 @@ void deleteValueHead(NODE *list){
 
 }
 
-NODE *insertValueNoHead(int newValue,NODE *list){
+void insertValueNoHead(int newValue,NODE **list){
     NODE * newNode = malloc(sizeof(NODE));
-    newNode->sequence = list;
+    newNode->sequence = *list;
     newNode->value = newValue;
 
-    list = newNode;
-    
-    return list;
+    *list = newNode;
+
 }
 
 void printListNoHead(NODE *list){
@@ -59,14 +58,12 @@ void printListNoHead(NODE *list){
 
 }
 
-NODE *deleteValueNoHead(NODE *list){
+void deleteValueNoHead(NODE **list){
     NODE *aux;
-    aux = list;
+    aux = *list;
 
-    list = aux->sequence;
+    *list = aux->sequence;
     free(aux);
-
-    return list;
 
 }
 
@@ -89,10 +86,11 @@ int main(){
     pListNH->value = 2;
     pListNH->sequence = NULL;
 
-    NODE *nv = insertValueNoHead(7,pListNH);
-    NODE *li = insertValueNoHead(9,nv);
-    NODE *delVal = deleteValueNoHead(li);
-    printListNoHead(delVal);
+    insertValueNoHead(9,&pListNH);
+    insertValueNoHead(8,&pListNH);
+    deleteValueNoHead(&pListNH);
+    printListNoHead(pListNH);
+
 
 
 }
