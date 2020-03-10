@@ -34,11 +34,13 @@ void printTop(NODE *Stack){
     {
         aux = aux->sequence;
     }
-    printf("%d",aux->value);
-
+    printf("%d\n",aux->value);
 
 }
 
+void removeTop(NODE *Stack){
+
+}
 int main(){
     //Iniciando uma pilha
     NODE *pStack;
