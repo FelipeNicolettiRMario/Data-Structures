@@ -7,49 +7,46 @@ typedef struct Node{
     
 }NODE;
 
-void incrementStack(int newValue,NODE **Stack){
-    NODE *newNode,*aux;
-    aux = *Stack;
-
-    newNode = malloc(sizeof(NODE));
-    newNode->sequence = NULL;
-    newNode->value = newValue;
-
-    if(aux != NULL){
-        aux->sequence = newNode;
-        *Stack = aux;
-    }
-    else
-    {
-        *Stack = newNode;
-    }
-    
+void incrementStack(int newValue,NODE *Stack){
+	NODE *newCell;
+	newCell = malloc(sizeof(NODE));
+	newCell->value = newValue;
+	newCell->sequence = Stack->sequence;
+	
+	Stack->sequence = newCell;
+	
 }
 
-void printTop(NODE *Stack){
-    NODE *aux;
-    aux = Stack;
+int removeTop(NODE *Stack){
 
-    while (aux->sequence != NULL)
-    {
-        aux = aux->sequence;
-    }
-    printf("%d\n",aux->value);
-
-}
-
-void removeTop(NODE *Stack){
+	if(Stack->sequence == NULL){
+		printf("Pilha está vazia");
+		return 0;
+	}
+	else{
+		int valueRemoved;
+		NODE *aux;
+		aux = Stack->sequence;
+		valueRemoved = Stack->value;
+		Stack->sequence = aux->sequence;
+		free(Stack);
+		return valueRemoved;
+	
+	}
 
 }
 int main(){
     //Iniciando uma pilha
+    NODE stack;
     NODE *pStack;
-    pStack = malloc(sizeof(NODE));
-    pStack = NULL;
 
-    incrementStack(8,&pStack);
-    incrementStack(9,&pStack);
+	pStack = &stack;
+	pStack->sequence = NULL;
+	
+	incrementStack(5,pStack);
+	incrementStack(6,pStack);
+	incrementStack(7,pStack);
+	removeTop(pStack);
 
-    printTop(pStack);
 
 }
