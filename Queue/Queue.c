@@ -21,9 +21,9 @@ void insert(NODE **start,NODE **end,int newValue){
 	}
 }
 
-int removeLast(NODE **end,NODE **end){
+int removeLast(NODE **end){
 	NODE *aux = malloc(sizeof(NODE));
-	int removed = (*start)->value;
+	int removed = (*end)->value;
 	aux = *end;
 	
 	if(*end == NULL){
