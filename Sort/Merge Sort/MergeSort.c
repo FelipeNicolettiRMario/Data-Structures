@@ -55,7 +55,7 @@ void mergeSort(int array[], int l, int r) {
 } 
   
 int main() { 
-    int array[] = { 12, 11, 13, 5, 6, 7 }; 
+    int array[] = {12,11,13,5,6,7}; 
     int array_size = sizeof(array) / sizeof(array[0]); 
   
     mergeSort(array, 0, array_size - 1); 

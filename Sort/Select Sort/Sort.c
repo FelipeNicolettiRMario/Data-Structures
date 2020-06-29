@@ -21,8 +21,8 @@ void selection(int *Vec,int n){
 
 int main(){
 	
-	int n = 5;
-	int Vector[5] = {4,2,3,1,5};
+	int n = 6;
+	int Vector[6] = { 12, 11, 13, 5, 6, 7 };
 	
 	selection(Vector,n);
 	
