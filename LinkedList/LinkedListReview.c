@@ -35,6 +35,22 @@ void removeLastItem(NODE *list){
 	free(auxList);
 }
 
+void removeItemByValue(NODE *list,int value){
+	NODE *auxList,*previousItem;
+	
+	auxList = list;
+	
+    while(auxList->value != value){
+        previousItem = auxList;
+		auxList = auxList->next;
+	}
+	
+	previousItem->next = auxList->next;
+	free(auxList);
+	
+	
+}
+
 void printList(NODE *list){
     NODE *aux;
     aux = list->next;
@@ -59,9 +75,9 @@ int main(){
 	
 	insertElement(5,head);
 	insertElement(4,head);
+    insertElement(10,head);
     insertElement(3,head);
-    insertElement(3,head);
-    removeLastItem(head);
+    removeItemByValue(head,10);
     insertElement(7,head);
 	printList(head);
 	
